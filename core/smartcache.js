@@ -25,7 +25,9 @@ const IS_LOCAL_NODE = (() => {
     return (
       typeof process !== "undefined" &&
       typeof process.versions?.node === "string" &&
-      !process.env.VERCEL
+      !process.env.VERCEL &&
+      typeof import.meta?.url === "string" &&
+      import.meta.url.startsWith("file:")
     );
   } catch { return false; }
 })();
@@ -245,7 +247,3 @@ export function jikanPageTTL(isLastPage, status) {
 export function mapTTL(status) {
   return status === "FINISHED" ? 30 * DAY : 12 * HOUR;
 }
-
-export const WATCH_TTL         = 3 * HOUR;
-export const SHOW_IDENTITY_TTL = 24 * HOUR;
-export const THIRTY_DAYS       = 30 * DAY;
