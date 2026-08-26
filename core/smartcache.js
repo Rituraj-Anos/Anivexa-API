@@ -247,3 +247,7 @@ export function jikanPageTTL(isLastPage, status) {
 export function mapTTL(status) {
   return status === "FINISHED" ? 30 * DAY : 12 * HOUR;
 }
+
+export const WATCH_TTL         = 3 * HOUR;
+export const SHOW_IDENTITY_TTL = 24 * HOUR;
+export const THIRTY_DAYS       = 30 * DAY;
